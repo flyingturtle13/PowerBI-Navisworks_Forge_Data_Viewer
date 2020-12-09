@@ -1,33 +1,46 @@
 # Power BI Building Model - Navisworks + Forge Viewer Integration
-The ultimate goal of these tools and workflow is to improve MEP BIM coordination communication and federated model access with project teams.  The Navisworks add-in allows the user to select which discipline/system properties (per hierarchy level) is exported to an Excel spreadsheet for data interoperability.  The properties available to export are the same available in the "Properties" window.  The primary purpose is to send the system properties to Forge model viewer to create a 3D model metrics dashbaord to permit users to access system data, quantities, and statuses.  This workflow requires Autodesk Navisworks (Manage, Simulate, Freedom) 2019, Navisworks API to access model data for exporting and Forge model viewer.  However, this respository focuses on the Navisworks API and add-in only. 
+This examples explores a BIM workflow that allows project stakeholders to easily access and visualize BIM data and produce custom metrics.  This workflow uses Power BI as the interface to integrate the Navisworks model and Autodesk Forge.  Using Power BI as the interface enables teams to leverage Power BI tools to enhance communication by developing custom visual metrics.  A custom Navisworks plug-in is used to export system model properties using the GUID as the primary key to connect to the model in Forge.
 </br></br>
-**Note:** This add-in application is part of the VDC Add-Ins suite of tools and currently includes Clash Data Exporter (only works with Navisworks Manage).  For more information about the Clash Data Exporter tool see [Navisworks-Clash Data Exporter](https://github.com/flyingturtle13/Navis-Clash_Data_Exporter.git) here.
+**Video Sample:** [Youtube-Visualizing BIM Data: Navisworks Model and Autodesk Forge Integration in Power BI] (https://youtu.be/Zm2XYszXDX8)
+</br></br>
+**Note:** 
+  * This custom pbiviz builds on original code provided by xiaodongliang. Learn more about Powr BI Forge Viewer Report [here] (https://github.com/xiaodongliang/forgeviewer_embed_in_powerbi_report.git).  
+  * Power BI template also requires exported tables from Navisworks using the System Properties Exporter add-in.  Learn more about System Properties Exporter [here] (https://github.com/flyingturtle13/Navis-SystemPropertyExporter.git).
 
 ## Getting Started
 Environment setup regarding application development logistics.
 
 * IDE:
-  * Visual Studio 2019
+  * Visual Studio Code
   
 * Framework:
-  * .NET Framework 4.7.2
+  * Autodesk Forge v7.10.0
 
 * Language:
-  * C#
+  * Node.js
 
 * Output Type:
-  * Dynamic-link Library (DLL)
+  * Custom Power BI Visual (pbiviz)
+  * Excel File (xlsx) - import as table into Power BI project to be used with associated custom pbiviz
+  * Power BI Template (pbix)
 
-* Additional Library Packages Implemented: </br>
-  * Navisworks API </br>
-    - Autodesk.Navisworks.Api
-    - Autodesk.Navisworks.Automation
-    - Autodesk.Navisworks.Clash
-    - navisworks.gui.roamer
-    - AdWindows
-  * Microsoft.Office.Interop.Excel
+* Additional Packages & Modules Implemented: </br>
+  * forgepowerbiview </br>
+    - forge-viewer
+    - jquery
+    - powerbi-visuals-utils-dataviewutils
+  * forge-model-properties-excel </br>
+    - autodesk.forge.designautomation
+    - body-parser
+    - cookie-session
+    - exceljs
+    - express
+    - forge-apis
+    - form-data
+    - multer
+    - socket.io
 
-## Application Development
+## Application Development (To Update)
 Application features and specs for Navisworks Manage add-in
 
 * Software Required
@@ -62,19 +75,19 @@ Application features and specs for Navisworks Manage add-in
   - User has ability to save and load a list of discipline property categories to export to eliminate list creation every time export is needed
   - Exported parameters are stored in an Excel file that the user can choose save location
 
-## Application Structure
+## Application Structure (To Update)
 Overall add-in process flowchart.  User interface in Navisworks is included for reference.
 <p align="center">
   <img src="https://user-images.githubusercontent.com/44215479/80936145-aca64a00-8d84-11ea-84ee-448722c0288b.png" width="1000">
 </p>
        
-## Navisworks API Implementation
+## Navisworks API Implementation (To Update)
 Below highlights specific API features implemented to access and export specific Clash Detective Data
 <p align="center">
   <img src="https://user-images.githubusercontent.com/44215479/80936415-f5aace00-8d85-11ea-93a1-32b978208db2.png" width="700">
 </p>
 
-##### Hierarchy Level Mapping Visual Using Selection Tree
+##### Hierarchy Level Mapping Visual Using Selection Tree (To Update)
 - How API is mapped to model files in Selection Tree UI
   - Model files exported from Revit
     <p align="center">
@@ -85,19 +98,19 @@ Below highlights specific API features implemented to access and export specific
      <img src="https://user-images.githubusercontent.com/44215479/80939489-a79bc780-8d91-11ea-8a75-d36d85c60939.png" width="700">
     </p>
 
-##### Model Categories and Properties Mapping Visual Using Properties Window
+##### Model Categories and Properties Mapping Visual Using Properties Window (To Update)
 - How API is mapped to model files to retrieve available categories and properties for export
   <p align="center">
      <img src="https://user-images.githubusercontent.com/44215479/80939719-5cce7f80-8d92-11ea-801b-4a4c7946e9fa.png" width="650">
   </p>
 
-##### Output Excel Spreadsheet Example
+##### Output Excel Spreadsheet Example (To Update)
 - Export Excel file example based on user input mapping API classes and properties
 <p align="center">
   <img src="https://user-images.githubusercontent.com/44215479/80940869-c603c200-8d95-11ea-9afa-f5bf6e7fdc97.png" width="1000">
 </p>
 
-## Installing and Running Add-in
+## Installing and Running Add-in (To Update)
 1. Clone or download project. </br>
 2. Open SystemPropertyExporter.sln in Visual Studio 2019. </br>
    * **Note:** SystemPropertyExporter.zip in Add-In Example Files contains example of working add-in for Navisworks 2019. Unzip and copy into **Local_Drive:\...\Autodesk\Navisworks Manage 2019\Plugins** if one would like to test without opening Visual Studio
@@ -113,7 +126,7 @@ Below highlights specific API features implemented to access and export specific
    * **Note:** If user would like to remove Clash Data Add-In, can be modified in StartMain.cs prior to debugging and release
 8. Open Navisworks Manage 2019 (or whichever version if Autodesk references modified) to execute and test add-in.
 
-## Add-In Implementation User Instructions
+## Add-In Implementation User Instructions (To Update)
 1) Select System Property Exporter (In reibbon: VDC Add-Ins --> Export Tools --> System Property Exporter) 
    <p align = "center">
       <img src="https://user-images.githubusercontent.com/44215479/80942187-06b10a80-8d99-11ea-903e-dae92a6e841a.png" width="600">
@@ -143,7 +156,7 @@ Below highlights specific API features implemented to access and export specific
       <img src="https://user-images.githubusercontent.com/44215479/80944803-36631100-8d9f-11ea-814c-b950e1e2df97.png" width="800">
    </p>
    
-## References for Further Learning
+## References for Further Learning (To Update)
 - [Customizing Autodesk® Navisworks® 2013 with the .NET API - Simon Bee](https://www.autodesk.com/autodesk-university/class/Customizing-AutodeskR-NavisworksR-2013-NET-API-2012)
 - [Navisworks .NET API Properties - Xiaodong Liang](https://adndevblog.typepad.com/aec/2012/05/navisworks-net-api-properties.html)
 - [API Docs - Guilherme Talarico](https://apidocs.co/apps/navisworks/2018/87317537-2911-4c08-b492-6496c82b3ed1.htm#)
