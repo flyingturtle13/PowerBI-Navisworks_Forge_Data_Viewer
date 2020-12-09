@@ -1,11 +1,11 @@
-# Power BI Building Model - Navisworks + Forge Viewer Integration
+# Power BI Building Assets Dashboard - Navisworks + Forge Viewer Integration
 This examples explores a BIM workflow that allows project stakeholders to easily access and visualize BIM data and produce custom metrics.  This workflow uses Power BI as the interface to integrate the Navisworks model and Autodesk Forge.  Using Power BI as the interface enables teams to leverage Power BI tools to enhance communication by developing custom visual metrics.  A custom Navisworks plug-in is used to export system model properties using the GUID as the primary key to connect to the model in Forge.
 </br></br>
-**Video Sample:** [Youtube-Visualizing BIM Data: Navisworks Model and Autodesk Forge Integration in Power BI] (https://youtu.be/Zm2XYszXDX8)
+**Video Sample:** [Youtube-Visualizing BIM Data: Navisworks Model and Autodesk Forge Integration in Power BI](https://youtu.be/Zm2XYszXDX8)
 </br></br>
 **Note:** 
-  * This custom pbiviz builds on original code provided by xiaodongliang. Learn more about Powr BI Forge Viewer Report [here] (https://github.com/xiaodongliang/forgeviewer_embed_in_powerbi_report.git).  
-  * Power BI template also requires exported tables from Navisworks using the System Properties Exporter add-in.  Learn more about System Properties Exporter [here] (https://github.com/flyingturtle13/Navis-SystemPropertyExporter.git).
+  * This custom pbiviz builds on original code provided by xiaodongliang. Learn more about Powr BI Forge Viewer Report [here](https://github.com/xiaodongliang/forgeviewer_embed_in_powerbi_report.git).  
+  * Power BI template also requires exported tables from Navisworks using the System Properties Exporter add-in.  Learn more about System Properties Exporter [here](https://github.com/flyingturtle13/Navis-SystemPropertyExporter.git).
 
 ## Getting Started
 Environment setup regarding application development logistics.
